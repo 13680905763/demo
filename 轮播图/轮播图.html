@@ -9,44 +9,33 @@
   <style>
     .container {
       margin: 0 auto;
-      width: 846px;
+      width: 586px;
       text-align: center;
     }
-
     .banner {
       position: relative;
-      width: 846px;
+      width: 586px;
       overflow: hidden;
     }
-
     .imgList {
       display: flex;
     }
-
+    img {
+      width: 100%;
+    }
     .control {
       position: absolute;
-      top: 50%;
-      left: 0;
-      transform: translate(0, -50%);
-      width: 846px;
-      height: 60px;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
     }
-
     .control .controlItem {
-      position: absolute;
       font-size: 44px;
       cursor: pointer;
-
     }
-
-    .control .left {
-      left: 0;
-    }
-
-    .control .right {
-      right: 0;
-    }
-
     .autoplay {
       cursor: pointer;
     }
@@ -55,8 +44,6 @@
 
 <body>
   <div class="container">
-
-
     <div class="banner">
       <div class="imgList">
         <img src="./img/1.jpg" alt="">
@@ -65,36 +52,34 @@
         <img src="./img/4.jpg" alt="">
         <img src="./img/5.png" alt="">
       </div>
-
       <div class="control">
         <div class="controlItem left">&lt;</div>
         <div class="controlItem right">&gt;</div>
       </div>
     </div>
-
     <h2 class="autoplay">自动播放</h2>
-
   </div>
 
 
   <script>
+    const BANNER_WIDTH = document.querySelector('.banner').clientWidth
     const imgList = document.querySelector('.imgList')
+    const IMG_NUM = imgList.children.length
     const control = document.querySelectorAll('.controlItem')
     const autoplay = document.querySelector('.autoplay')
     // 记录imgList 偏移量
     let x = 0
     const controlClick = (direction = 'right') => {
       return () => {
-        direction == 'right' ? x -= 846 : x += 846
-        x >= 0 ? x = -3384 : x
-        x < -3384 ? x = 0 : x
+        direction == 'right' ? x -= BANNER_WIDTH : x += BANNER_WIDTH
+        x >= 0 ? x = -(BANNER_WIDTH * (IMG_NUM - 1)) : x
+        x < -(BANNER_WIDTH * (IMG_NUM - 1)) ? x = 0 : x
         imgList.style.transform = `translateX(${x}px)`
       }
     }
     // 左右点击
     control[0].addEventListener('click', controlClick('left'))
     control[1].addEventListener('click', controlClick())
-
 
     // 自动播放
     let isAutoplay = false
@@ -106,8 +91,6 @@
       } else {
         clearInterval(autoplayId)
       }
-
-
     })
   </script>
 </body>
