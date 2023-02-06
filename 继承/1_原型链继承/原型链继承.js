@@ -24,15 +24,18 @@ Student.prototype = new Parent()
 
 let student1 = new Student()
 let student2 = new Student()
+console.log('-----------修改前----------')
 student1.getInfo()
 student2.getInfo()
 
 student1.isShow = false
 student1.info.name = '小红'
 student2.info.age = 20
-
+console.log('-----------修改后----------')
 student1.getInfo()
 student2.getInfo()
+
+console.log('info相等', student1.info === student2.info)
 
 // 缺点总结
 // 1、父类的引用类型会被所有子类共享，更改一个子类的引用属性，其他子类也会受影响
