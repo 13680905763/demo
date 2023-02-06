@@ -37,7 +37,9 @@ Function.prototype.fbind = function (thisArg, ...otherArg) {
   return (...newArgs) => {
     const allArgs = [...otherArg, ...newArgs]
     thisArg.fn(...allArgs)
+
+    // 后续会多次调用fn不要delete
   }
 }
-const newFoo = foo.fbind('abc','faf','fa12')
+const newFoo = foo.fbind('abc', 'faf', 'fa12')
 newFoo(123)
