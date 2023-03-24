@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let message = 'say hello javaScript Hello baby'
+    const re1 = /hello/ig
+    message = message.replace(re1, 'HELLO');
+    // console.log(message);
+
+    let m1 = 'HTML5'
+    const re2 = /HTML\d/ig
+
+    // console.log(m1.match(re2));
+
+    let m2 = '北京时间 11:02 祝你生活愉快! '
+    const re3 = /\b\d\d:\d\d\b/g
+    // console.log(m2.match(re3));
+
+    const name = ['index.html', 'index.css', 'index.js', 'main.js']
+    const re4 = /\.js$/
+    const fileName = name.filter(item => re4.test(item))
+    // console.log(fileName.filter(item => re4.test(item)));
+
+    const number = ['13680905763','12345678910','5201314','16888888888']
+    const reg = /^1[356789]\d{9}$/
+    const phoneNumber = number.filter(item=>reg.test(item))
+    // console.log(phoneNumber);
+    
+    const book = '我有几本书《js从入门到放弃》、《css新手指南》'
+    const result = book.match(/《.+?》/g)
+    // console.log(result);
+
+    const str = "我有几本书《jas从入门到放弃》、《css新手指南》、《js真难》"
+    const result1 = str.match(/《(js|css)(.+?)》/)
+    console.log(result1);
+
+    const a = /^https?.+/
+  </script>
+</body>
+
+</html>
